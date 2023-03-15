@@ -18,8 +18,13 @@ export default function TextForm(props) {
     setText(newText);
   };
 
-  const handelCopyClick = () => {
+  const handelExtraSpaceClick = () => {
     // console.log("i am copy");
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
+
+  const handelCopyClick = () => {
     var newText = document.getElementById("myBox");
     newText.select();
     navigator.clipboard.writeText(newText.value);
@@ -61,6 +66,12 @@ export default function TextForm(props) {
           onClick={handelCopyClick}
         >
           Copy To ClipBoard
+        </button>
+        <button
+          className="btn btn-primary mx-1 btn-sm"
+          onClick={handelExtraSpaceClick}
+        >
+          Remove Extra Space
         </button>
       </div>
 
