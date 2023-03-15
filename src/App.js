@@ -9,8 +9,8 @@ export function App() {
       <Navbar title="TextUlits" aboutText="About" />
       {/* <Navbar /> */}
       <div className="container my-3">
-        {/* <TextForm heading="Enter the text to analyze" /> */}
-        <About />
+        <TextForm heading="Enter the text to analyze" />
+        {/* <About /> */}
       </div>
     </>
   );

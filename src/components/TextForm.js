@@ -18,6 +18,13 @@ export default function TextForm(props) {
     setText(newText);
   };
 
+  const handelCopyClick = () => {
+    // console.log("i am copy");
+    var newText = document.getElementById("myBox");
+    newText.select();
+    navigator.clipboard.writeText(newText.value);
+  };
+
   const handleOnChange = (event) => {
     // console.log("On change");
     setText(event.target.value);
@@ -31,7 +38,7 @@ export default function TextForm(props) {
         <div className="mb-3">
           <textarea
             className="form-control"
-            id="myTextBox"
+            id="myBox"
             value={text}
             onChange={handleOnChange}
             rows="8"
@@ -48,6 +55,12 @@ export default function TextForm(props) {
           onClick={handelClearClick}
         >
           Clear
+        </button>
+        <button
+          className="btn btn-primary mx-1 btn-sm"
+          onClick={handelCopyClick}
+        >
+          Copy To ClipBoard
         </button>
       </div>
 
