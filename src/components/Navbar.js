@@ -50,6 +50,12 @@ export default function Navbar(props) {
 }
 
 Navbar.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   aboutText: PropTypes.string,
+};
+
+// Specifies the default values for props:
+Navbar.defaultProps = {
+  title: "Set TextUilts",
+  aboutText: "About",
 };
