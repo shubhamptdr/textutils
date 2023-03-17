@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export function App() {
   const [mode, setMode] = useState("light");
@@ -41,22 +42,26 @@ export function App() {
 
   return (
     <>
-      <Navbar
-        title="TextUlits"
-        // aboutText="About"
-        mode={mode}
-        toggleMode={toggleMode}
-      />
-      <Alert alert={alert} />
-      {/* <Navbar /> */}
-      <div className="container my-3">
-        <TextForm
-          heading="Enter the text to analyze"
-          mode={mode}
-          showAlert={showAlert}
-        />
-        {/* <About /> */}
-      </div>
+      <Router>
+        <Navbar title="TextUlits" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Routes>
+            <Route exact path="/about" element={<About />} />
+            <Route
+              exact // use excat keywork here
+              path="/"
+              element={
+                <TextForm
+                  heading="Enter the text to analyze"
+                  mode={mode}
+                  showAlert={showAlert}
+                />
+              }
+            />
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }
